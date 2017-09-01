@@ -51,12 +51,12 @@ module.exports = {
                 loader: "style!css"
             },
             {
-                test: /\.sass/,
+                test: /\.scss/,
                 loader: 'style-loader!css-loader!sass-loader'
             }
         ]
     },
     resolve:{
-        extensions:['.js','.json','.sass','.jsx']
+        extensions:['.js','.json','.scss','.jsx']
     }
 };

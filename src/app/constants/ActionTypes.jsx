@@ -1,0 +1,3 @@
+export const FETCH_LIST= "FETCH_LIST";
+export const SELECT_MUSIC="SELECT_MUSIC";
+export const UPDATE_PLAYER="UPDATE_PLAYER";
