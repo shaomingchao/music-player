@@ -1,4 +1,4 @@
-import {FETCH_LIST} from "../constants/ActionTypes";
+import {CHOICE_MUSIC, DELETE_ITEM, FETCH_LIST, SELECT_MUSIC} from "../constants/ActionTypes";
 
 const defaultState={
     musicList:[],
@@ -7,7 +7,7 @@ const defaultState={
         article:"",
         cover:""
     },
-    repeatType: 'cycle'
+    choicMusicItem: {}
 };
 
 export const musicList=(state=defaultState,action)=>{
@@ -17,8 +17,27 @@ export const musicList=(state=defaultState,action)=>{
             return {
                 musicList:action.data,
                 currentMusitItem:action.data[0],
-                repeatType:"cycle"
+                choicMusicItem:{}
             };
+        case SELECT_MUSIC:
+            return Object.assign({},state,action.data);
+            break;
+        case DELETE_ITEM:
+            return Object.assign({},
+                state,
+                {
+                    musicList:state.musicList.filter((item)=>item!=action.data)
+                }
+                );
+            break;
+        case CHOICE_MUSIC:
+            return Object.assign({},
+                state,
+                {
+                    choicMusicItem:action.data
+                }
+                )
+            break;
         default:
             return state;
     }

@@ -1,18 +1,22 @@
 import React from 'react';
 import ListPage from '../components/ListPage';
 import {connect} from 'react-redux';
-
-class PageContainer extends React.Component{
-
-    render(){
-        return (
-            <ListPage data={this.props.musicList}/>
-        )
-    }
-}
+import {choiceMusic, deleteMusic} from "../actions/index";
 
 const mapStateToProps=(state)=>{
-    return state.musicList
+    return {
+        propMusicList:state.musicList
+    }
 };
-
-export default connect(mapStateToProps)(PageContainer);
+const mapDispatchToProps=(dispatch)=> {
+    return {
+        deleteMusic: (item) => {
+            dispatch(deleteMusic(item))
+        },
+        choiceMusic: (item) => {
+            dispatch(choiceMusic(item))
+        }
+    }
+}
+const PageContainer=connect(mapStateToProps,mapDispatchToProps)(ListPage);
+export default PageContainer;

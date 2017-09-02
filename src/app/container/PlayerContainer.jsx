@@ -2,17 +2,20 @@ import React from 'react';
 import Player from '../components/Player';
 import {connect} from 'react-redux';
 
-class PlayerContainer extends React.Component{
-
-    render(){
-        return (
-            <Player data={this.props}/>
-        )
-    }
-}
+// class PlayerContainer extends React.Component{
+//
+//     render(){
+//         return (
+//             <Player {...this.props}/>
+//         )
+//     }
+// }
 
 const mapStateToProps=(state)=>{
-    return state.musicList
-}
-
-export default connect(mapStateToProps)(PlayerContainer)
+    return {
+       propMusicList:state.musicList,
+       propPlayerStatus:state.playerStatus
+    }
+};
+const PlayerContainer=connect(mapStateToProps)(Player)
+export default PlayerContainer;

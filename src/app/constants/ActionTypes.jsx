@@ -1,3 +1,5 @@
 export const FETCH_LIST= "FETCH_LIST";
 export const SELECT_MUSIC="SELECT_MUSIC";
 export const UPDATE_PLAYER="UPDATE_PLAYER";
+export const CHOICE_MUSIC="CHOICE_MUSIC";
+export const DELETE_ITEM="DELETE_ITEM";

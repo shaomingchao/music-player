@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import {musicList} from "./musicList";
+import {playerStatus} from "./playerStatus";
 
 
 const rootReducer = combineReducers({
-    musicList
+    musicList,
+    playerStatus
 });
 
 export default rootReducer

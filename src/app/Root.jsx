@@ -6,6 +6,12 @@ import PageContainer from './container/PageContainer';
 import PlayerContainer from './container/PlayerContainer';
 
 export default class Root extends Component {
+    componentDidMount(){
+
+    }
+    componentWillUnmount(){
+
+    }
     render() {
         return (
             <div className="container">

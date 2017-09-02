@@ -3,14 +3,15 @@ import ListItem from './ListItem';
 
 export default class ListPage extends Component{
     render(){
-        const musicList=this.props.data;
-        console.log("1111111"+JSON.stringify(musicList))
-        let Items = musicList && musicList.map((item) => {
+        const propMusicList=this.props.propMusicList;
+        let Items = propMusicList.musicList.length>0 && propMusicList.musicList.map((item) => {
             return (
                 <ListItem
+                    deleteMusic={(item)=>{this.props.deleteMusic(item)}}
+                    choiceMusic={(item)=>{this.props.choiceMusic(item)}}
                     key={item.id}
                     data={item}
-                    focus={this.props.data.currentMusitItem === item}
+                    focus={this.props.propMusicList.currentMusitItem === item}
                 ></ListItem>
             );
         });
