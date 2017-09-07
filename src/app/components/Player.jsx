@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Progress from './Progress';
 import './PlayerStyle.scss'
 import {updatePlayer,selectMusic} from '../actions/index'
+import {toolsPlayMusic} from "../utils/utils";
 
 let duration=null;
 const repeatList = [
@@ -11,17 +12,11 @@ const repeatList = [
     'random'
 ];
 export default class Player extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.play=this.play.bind(this);
     }
     componentDidMount(){
-        $("#player").jPlayer({
-            supplied:"mp3",
-            wmode:"window",
-            useStateClassSkin:true
-        });
-
         $("#player").bind($.jPlayer.event.timeupdate, (e) => {
             duration = e.jPlayer.status.duration;
             this.props.dispatch(updatePlayer({
@@ -40,18 +35,6 @@ export default class Player extends Component {
         $("#player").unbind($.jPlayer.event.ended);
     }
     componentDidUpdate(){
-        if(this.props.propPlayerStatus.isInit===false)
-        {
-            if(this.props.propMusicList.musicList.length>0) {
-                this.playMusic(this.props.propMusicList.musicList[0]);
-                this.props.dispatch(updatePlayer({
-                    isInit:true
-                }))
-            }
-        }
-        else{
-
-        }
     }
     formatTime(time) {
         time = Math.floor(time);
@@ -61,9 +44,8 @@ export default class Player extends Component {
         return miniute + ':' + (seconds < 10 ? '0' + seconds : seconds);
     }
     playMusic(item) {
-        $("#player").jPlayer("setMedia", {
-            mp3: item.file
-        }).jPlayer('play');
+        console.log(item)
+        toolsPlayMusic(item);
         this.props.dispatch(selectMusic({
             currentMusitItem:item
         }))

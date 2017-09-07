@@ -4,7 +4,7 @@ import './ListItemStyle.scss';
 class ListItem extends React.Component {
     choicMusic(item,event){
         event.stopPropagation();
-        this.props.choicMusic(item);
+        this.props.choiceMusic(item);
     }
     deleteMusic(item){
         this.props.deleteMusic(item);

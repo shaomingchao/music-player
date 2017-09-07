@@ -34,7 +34,7 @@ export const musicList=(state=defaultState,action)=>{
             return Object.assign({},
                 state,
                 {
-                    choicMusicItem:action.data
+                    currentMusitItem:action.data
                 }
                 )
             break;
